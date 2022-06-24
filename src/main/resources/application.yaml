@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          url-expression: "'http://'+serviceId"
+    kubernetes:
+      reload:
+        enabled: true
+        mode: polling
+        period: 5000
+  redis:
+    host: my-redis-master.default.svc.cluster.local
+    port: 6379
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      enabled: true
+    restart:
+      enabled: true
+    info:
+      enabled: true
