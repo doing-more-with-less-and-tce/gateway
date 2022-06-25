@@ -18,12 +18,14 @@ spring:
 
 management:
   endpoints:
+    enabled-by-default: true
     web:
       exposure:
         include: '*'
   endpoint:
     health:
       enabled: true
+      show-details: always
     restart:
       enabled: true
     info:

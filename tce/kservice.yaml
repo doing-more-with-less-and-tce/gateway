@@ -10,6 +10,7 @@ spec:
         autoscaling.knative.dev/maxScale: "10"
         autoscaling.knative.dev/metric: "rps"
         autoscaling.knative.dev/target: "5"
+        autoscaling.knative.dev/min-scale: "1"
     spec:
       containers:
       - image: docker.io/dashaun/gateway-default:latest
