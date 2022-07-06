@@ -1,0 +1,37 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: gateway
+data:
+  application.yml: |-
+    spring:
+      cloud:
+        gateway:
+          discovery:
+            locator:
+              enabled: true
+              url-expression: "'http://'+serviceId"
+        kubernetes:
+          config:
+            fail-fast: true
+          reload:
+            enabled: true
+            mode: polling
+            period: 5000
+      redis:
+        host: my-redis-master.default.svc.cluster.local
+        port: 6379
+    management:
+      endpoints:
+        enabled-by-default: true
+        web:
+          exposure:
+            include: '*'
+      endpoint:
+        health:
+          enabled: true
+          show-details: always
+        restart:
+          enabled: true
+        info:
+          enabled: true
